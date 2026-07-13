@@ -199,7 +199,8 @@ function onSquareClick(sq) {
   if (selectedSquare) {
     const move = legalTargets.find((m) => m.to === sq);
     if (move) {
-      attemptMove(selectedSquare, sq, move.promotion);
+      // Do not auto-pick promotion — show the picker when needed.
+      attemptMove(selectedSquare, sq);
       return;
     }
   }

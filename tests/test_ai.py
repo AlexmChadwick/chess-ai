@@ -35,9 +35,9 @@ def test_choose_move_no_legal_raises() -> None:
     assert raised
 
 
-def test_ai_prefers_capture() -> None:
-    board = chess.Board("4k3/8/8/8/8/8/8/r3K3 w - - 0 1")
+def test_ai_prefers_hanging_queen_capture() -> None:
+    # Black queen hangs on d5; white queen on d1 can capture it safely.
+    board = chess.Board("4k3/8/8/3q4/8/8/8/3QK3 w - - 0 1")
     move = choose_move(board, Difficulty.HARD)
-    board.push(move)
-    # White king should capture the rook.
-    assert board.piece_at(chess.A1) is not None
+    assert move in board.legal_moves
+    assert move.uci() == "d1d5"

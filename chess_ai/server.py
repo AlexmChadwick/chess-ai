@@ -145,7 +145,14 @@ class ChessAPIHandler(BaseHTTPRequestHandler):
         self._json_response({"ok": False, "error": message}, status=status)
 
     def _serve_static(self, filename: str) -> None:
-        filepath = STATIC_DIR / filename
+        # Resolve under STATIC_DIR only (block path traversal).
+        base = STATIC_DIR.resolve()
+        filepath = (STATIC_DIR / filename).resolve()
+        try:
+            filepath.relative_to(base)
+        except ValueError:
+            self._error(HTTPStatus.NOT_FOUND, f"File not found: {filename}")
+            return
         if not filepath.is_file():
             self._error(HTTPStatus.NOT_FOUND, f"File not found: {filename}")
             return
