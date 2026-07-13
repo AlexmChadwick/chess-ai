@@ -1,3 +1,5 @@
+One-shotted chess game via Hermes Agent as a proof of concept of a Hermes Coder Profile. Leaving up in case anyone is curious.
+
 # Chess AI
 
 A browser-based chess game with a built-in AI opponent. Pure Python — no native engines, no pygame, no compilers required.
