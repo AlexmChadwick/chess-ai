@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chess AI</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>Chess AI</h1>
+      <p class="subtitle">Play against a pure-Python minimax engine in your browser</p>
+    </header>
+
+    <div class="main-layout">
+      <aside class="sidebar">
+        <section class="panel">
+          <h2>Controls</h2>
+          <div class="control-group">
+            <label for="difficulty">Difficulty</label>
+            <select id="difficulty">
+              <option value="easy">Easy</option>
+              <option value="medium" selected>Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="player-color">Play as</label>
+            <select id="player-color">
+              <option value="white" selected>White</option>
+              <option value="black">Black</option>
+            </select>
+          </div>
+          <div class="button-row">
+            <button id="btn-new" class="btn btn-primary">New Game</button>
+            <button id="btn-undo" class="btn btn-secondary" disabled>Undo</button>
+          </div>
+        </section>
+
+        <section class="panel status-panel">
+          <h2>Status</h2>
+          <div id="status-text" class="status-text">Loading…</div>
+          <div id="turn-indicator" class="turn-indicator"></div>
+        </section>
+
+        <section class="panel help-panel">
+          <h2>How to play</h2>
+          <ul>
+            <li>Click a piece, then click a highlighted square to move.</li>
+            <li>Drag-and-drop also works.</li>
+            <li>When promoting, a piece picker appears (defaults to Queen).</li>
+            <li>Undo reverts the last half-move.</li>
+          </ul>
+        </section>
+      </aside>
+
+      <main class="board-area">
+        <div id="board" class="board" aria-label="Chess board"></div>
+        <div class="board-labels">
+          <span class="label-files"></span>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="promotion-modal" class="modal hidden" role="dialog" aria-label="Choose promotion piece">
+    <div class="modal-content">
+      <h3>Promote pawn to:</h3>
+      <div class="promotion-choices">
+        <button data-piece="q" class="promo-btn" title="Queen">♕</button>
+        <button data-piece="r" class="promo-btn" title="Rook">♖</button>
+        <button data-piece="b" class="promo-btn" title="Bishop">♗</button>
+        <button data-piece="n" class="promo-btn" title="Knight">♘</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="game-over-modal" class="modal hidden" role="dialog" aria-label="Game over">
+    <div class="modal-content">
+      <h3 id="game-over-title">Game Over</h3>
+      <p id="game-over-message"></p>
+      <button id="btn-game-over-new" class="btn btn-primary">New Game</button>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
