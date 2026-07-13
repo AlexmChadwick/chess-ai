@@ -1,4 +1,6 @@
-One-shotted chess game via Hermes Agent as a proof of concept of a Hermes Coder Profile. Leaving up in case anyone is curious.
+One-shotted chess game (including everything up to PR) via Hermes Agent as a proof of concept of a Hermes Coder Profile. Leaving up in case anyone is curious.
+
+Prompt on discord: Create a repo called chess-ai with a gui for chess and AI player capabilities. Should be intuitive. Ensure it will compile on darwin-arm
 
 # Chess AI
 
